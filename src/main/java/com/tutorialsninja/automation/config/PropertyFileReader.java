@@ -9,27 +9,36 @@ import com.tutorialsninja.automation.util.PathHelper;
 
 
 public class PropertyFileReader implements ConfigurationReader{
+	//initializing config properties file here
+	Properties properties = null;
 	
-	Properties properties=null;
-	
-	public PropertyFileReader() {
+	public PropertyFileReader() 
+	{
 		properties=new Properties();
-		try {
+		
+		try
+		{
 			properties.load(PathHelper.getInputStreamResourcePath("/src/main/resources/ConfigurationFile/config.properties"));
-		} catch (IOException e) {
+		} 
+		//path helper will append the the user directory
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 	}
 
-	public String getUrl() {
+	public String getUrl() 
+	{
 		return properties.getProperty("url");
 	}
 
-	public String getBrowser() {
+	public String getBrowser() 
+	{
 		return properties.getProperty("browser");
 	}
 
-	public int getPageLoadTimeOut() {
+	public int getPageLoadTimeOut() 
+	{
 		return Integer.parseInt(properties.getProperty("PageLoadTimeOut"));
 	}
 
